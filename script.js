@@ -243,30 +243,29 @@
 
 // async function and await keyword - only run promise function
 
-function addNum() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            console.log('Hai!!');
-            resolve({ Degree: 'BCA'});
-        }, 3000);
-    });
-};
-    async function waitState(dept) {
-        var col = await addNum(dept);    
-        console.log('Run', col);
-    };
-    waitState();
+// function addNum() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             console.log('Hai!!');
+//             resolve({ Degree: 'BCA'});
+//         }, 3000);
+//     });
+// };
+//     async function waitState(dept) {
+//         var col = await addNum(dept);    
+//         console.log('Run', col);
+//     };
+//     waitState();
 
 // promise.all - array of promise. one function reject and promise.all function return catch
 // var sum = Promise.resolve("Fabevy");
-// // console.log(sum);
 // var tech = () => {
 //     return new Promise((resolve, reject) => {
 //         setTimeout(() => {
 //             console.log("Technology");
 //             resolve();
 //         }, 2000);
-
+//         // resolve();
 //     });
 // };
 // var symbol = Promise.reject('**');
@@ -278,6 +277,31 @@ function addNum() {
 //     .catch(() => {
 //         console.log("Failure");
 //     });
+
+//     const p1 = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve('one'), 1000);
+//       });
+//       const p2 = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve('two'), 2000);
+//       });
+//       const p3 = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve('three'), 3000);
+//       });
+//       const p4 = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve('four'), 4000);
+//       });
+//       const p5 = new Promise((resolve, reject) => {
+//         reject();
+//       });
+      
+      // Using .catch:
+      // Promise.all([p1, p2, p3,p4,p5])
+      // .then((values) => {
+      //   console.log(values);
+      // })
+      // .catch((error) => {
+      //   console.log("reject")
+      // });
 
 // Hoisting - var declaration and function declaration move to top order in compile time. let keyword cannot move top order. let doesnot have Hoisting.
 // var b;
@@ -293,10 +317,60 @@ function addNum() {
 // example(3,2,4,5); 
 
 // destructing assignment - expression that makes it easy to extract values from arrays, or properties from objects, into distinct variables.
-var languages = ['HTML','CSS','Javascript'];
-var [a,b,c] = languages;
-console.log(a,b,c);
-var mobile = {company:"Realme",price:25000};
-var {company,price} = mobile;
-console.log(company,price);
+// var languages = ['HTML','CSS','Javascript'];
+// var [a,b,c] = languages;
+// console.log(a,b,c);
+// var mobile = {company:"Realme",price:25000};
+// var {company,price} = mobile;
+// console.log(company,price);
+
+
+// spread operator - concate two variable values.
+// var first = [3,2,'Hello World!!'];
+// var second = [5,3,...first];
+// function output(a,b,...c){
+//     return ((a+b) * c.length);
+// };
+// var x = output(3,5,...second);
+// console.log(x);
+// function test(data,data1,data2,data3,data4){
+//   console.log("Values: ",data,data1,data2,data3,data4);
+// }
+// test(...[2,3,45,5,6]);
+
+// rest operator - opposite function of spread operator
+// function value(...data){
+//   console.log("Output: ", data);
+// }
+// value(2,3,4,1,23);
+
+// shallow copy - cannot change original array/object address
+var lang = {
+  name : 'C++',
+  compiler : 'TurboC'
+};
+var lang_1= lang;
+lang_1.name = "Python"; // op lang_1:python, lang:python
+console.log(lang_1,lang);  //  change value in both variable 
+
+var intArray = [2,3,4];
+var intArray2 = intArray;
+intArray[0] = 5;
+console.log(intArray,intArray2); // op [5,3,4] [5,3,4]
+
+var changeArr = [5,4,2];
+var changeArr2 = [...changeArr]; // create new array
+changeArr2[0] = 9;
+console.log(changeArr,changeArr2); // [5.4.2]  [9,4,2]
+
+// deep copy - create a new array/ object address
+var product = {
+  name : 'samsung',
+  model : 2022
+};
+var shop = {...product}; // create new object so the shop value are changed.
+shop.model = 2021;  
+console.log(product,shop); // op pro: 2022, shop : 2021
+
+
 
